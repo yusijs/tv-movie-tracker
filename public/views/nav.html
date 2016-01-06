@@ -1,0 +1,40 @@
+<div class="container-fluid" >
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" ng-click="navCollapsed = !navCollapsed">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#">TV &amp; Movie Tracker</a>
+  </div>
+
+  <div uib-collapse="navCollapsed" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+      <li><a ui-sref="home">Home</a></li>
+      <li><a ui-sref="movies">Movies</a></li>
+      <li><a ui-sref="shows">Shows</a></li>
+      <li class="dropdown"  uib-dropdown on-toggle="toggled(open)">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" uib-dropdown-toggle>Watchlist <span class="caret"></span></a>
+          <ul class="dropdown-menu uib-dropdown-menu" aria-labelledby="single-button">
+            <li role="menuitem"><a ui-sref="watchlistshows">Shows</a></li>
+            <li role="menuitem"><a href="/watchlist/movies">Movies</a></li>
+          </ul>
+      </li>
+    </ul>
+    <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
+      </div>
+    </form>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown"  uib-dropdown on-toggle="toggled(open)">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" uib-dropdown-toggle>My Account <span class="caret"></span></a>
+          <ul class="dropdown-menu uib-dropdown-menu" aria-labelledby="single-button">
+            <li role="menuitem" class="pull-right"><a href="#login">Log In <i class="fa fa-sign-in"></i></a></li>
+            <li role="menuitem" class="pull-right"><a href="#signup">Sign Up <i class="fa fa-user"></i></a></li>
+          </ul>
+      </li>
+    </ul>
+  </div>
+</div>

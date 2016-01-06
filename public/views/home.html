@@ -1,0 +1,19 @@
+<p class="lead">
+  Upcoming Movies &amp; Shows!
+</p>
+
+<uib-tabset>
+  <uib-tab>
+    <uib-tab-heading><i class="fa fa-tv"></i> Movies</uib-tab-heading>
+    <upcoming-movies></upcoming-movies>
+  </uib-tab>
+  <uib-tab>
+    <uib-tab-heading>
+      <i class="glyphicon glyphicon-bell"></i> TV Shows
+    </uib-tab-heading>
+    I've got an HTML heading, and a select callback. Pretty cool!
+  </uib-tab>
+</uib-tabset>
+<div class="row text-center">
+  <uib-pagination total-items="items" ng-model="page" ng-change="pageChanged()" max-size="20" previous-text="&lsaquo;" next-text="&rsaquo;"></uib-pagination>
+</div>

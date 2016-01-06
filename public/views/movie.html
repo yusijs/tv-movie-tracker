@@ -1,0 +1,102 @@
+<div class="row">
+  <div id="backdrop">
+    <img ng-src="https://image.tmdb.org/t/p/w1000{{movie.backdrop_path}}" alt="{{movie.tagline}}" class="img-rounded" />
+    <h2 id="movie-title">
+      <span>
+        {{movie.original_title}}
+        <span class='spacer'></span>
+        <br>
+        <span class='spacer'></span>
+        <tagline>{{movie.tagline | limitTo: 30}}</tagline>
+      </span>
+      <!--<span class="title">{{movie.original_title}}</span><br />
+      <span class="tagline">{{movie.tagline}}</span>-->
+    </h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 text-center">
+    <a type="link" ng-href="https://www.themoviedb.org/movie/{{movie.id}}" target="_blank" class="btn btn-primary" name="button">
+      TheMovieDB
+      <i class="fa fa-tv fa-2x"></i>
+    </a>
+  </div>
+  <div class="col-md-4 text-center">
+    <button ng-show="watchlist.indexOf(id)==-1" type="button" ng-click="addToWatchlist(id)" class="btn btn-primary" name="button">
+      Add to Watchlist
+      <i class="fa fa-eye fa-2x"></i>
+    </button>
+    <button ng-show="watchlist.indexOf(id)!=-1" type="button" ng-click="removeFromWatchlist(id)" class="btn btn-danger" name="button">
+      Remove from Watchlist
+      <span class="fa-stack">
+        <i class="fa fa-eye fa-stack-1x"></i>
+        <i class="fa fa-ban fa-stack-2x text-danger"></i>
+      </span>
+    </button>
+  </div>
+  <div class="col-md-4 text-center">
+    <a ng-href="http://www.imdb.com/title/{{movie.imdb_id}}" target="_blank" type="button" class="btn btn-primary" name="button">IMDB
+      <i class="fa fa-tv fa-2x"></i>
+    </a>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-4">
+    <legend class="text-center">Movie Info</legend>
+    <div class="row">
+      <div class="col-xs-5">
+        Release date:
+      </div>
+      <div class="col-xs-7">
+        {{movie.release_date}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-5">
+        Budget
+      </div>
+      <div class="col-xs-7">
+        {{movie.budget | currency : "USD$ "}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-5">
+        Revenue
+      </div>
+      <div class="col-xs-7">
+        {{movie.revenue | currency : "USD$ "}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-5">
+        Genres:
+      </div>
+      <div class="col-xs-7">
+        <span class="badge" id="movie-genre" ng-repeat="genre in movie.genres">{{genre.name}}</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-5">
+        Language:
+      </div>
+      <div class="col-xs-7">
+        <span ng-repeat="language in movie.spoken_languages">{{language.name}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <legend class="text-center">Similar Movies</legend>
+    <span ng-repeat="similar in movie.similar.results | orderBy: vote_average : reverse | limitTo: 6">
+      <a ui-sref="movies.movie({id:similar.id})">{{similar.original_title}} | {{similar.vote_average}}</a><br>
+    </span>
+  </div>
+  <div class="col-lg-4">
+    <legend class="text-center">Plot Synopsis</legend>
+    {{movie.overview}}
+  </div>
+</div>
+<div class="row" style="display:none">
+  <pre>
+    {{movie | json}}
+  </pre>
+</div>

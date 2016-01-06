@@ -1,0 +1,28 @@
+
+  <div class="col-md-12 panel panel-default" ng-repeat="movie in myMovies" style="padding:0px !important; ">
+    <div class="panel-heading">
+      <h3 style="margin:0px">
+        <i class="fa fa-film"></i>
+        {{movie.original_title}}  ({{movie.release_date}}) [<span ng-repeat="genre in movie.genres">{{genre.name}} </span>]
+      </h3 style="margin:0px">
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-6">
+          {{movie.overview}}
+        </div>
+        <div class="col-md-3">
+          <ul>
+            <li ng-repeat="similar in movie.similar.results | orderBy: '-vote_average' | limitTo: 10">
+              <a ui-sref="movies.movie({id:similar.id})">{{similar.original_title}} ({{similar.vote_average}})</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-3 hidden-sm hidden-xs">
+          <div ng-if="movie.poster_path">
+            <img ng-src="http://image.tmdb.org/t/p/w185/{{movie.poster_path}}">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

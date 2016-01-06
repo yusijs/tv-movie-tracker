@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="tvApp">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TV &amp; Movies</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://bootswatch.com/slate/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="/js/vendor/loading-bar.min.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="/css/style.css" media="screen" title="no title" charset="utf-8">
+  <link rel="icon" href="/favicon.ico"/>
+</head>
+<body>
+  <nav class="navbar navbar-default" ng-controller="navctrl">
+    <div class="container-fluid" >
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" ng-click="navCollapsed = !navCollapsed">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">TV &amp; Movie Tracker</a>
+      </div>
+
+      <div uib-collapse="navCollapsed" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a ui-sref="home">Home</a></li>
+          <li><a ui-sref="movies">Movies</a></li>
+          <li><a ui-sref="shows">Shows</a></li>
+          <li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" uib-dropdown-toggle>Watchlist <span class="caret"></span></a>
+              <ul class="dropdown-menu uib-dropdown-menu" aria-labelledby="single-button">
+                <li role="menuitem"><a ui-sref="watchlistShows">Shows</a></li>
+                <li role="menuitem"><a ui-sref="watchlistMovies">Movies</a></li>
+              </ul>
+          </li>
+        </ul>
+        <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown"  uib-dropdown on-toggle="toggled(open)">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" uib-dropdown-toggle>Account <span class="caret"></span></a>
+              <ul class="dropdown-menu uib-dropdown-menu" aria-labelledby="single-button" ng-controller="loginController">
+                <li role="menuitem"><a href="#login" ng-click="open()" ng-hide="auth"><i class="fa fa-sign-in"></i> Log In</a></li>
+                <li role="menuitem"><a href="#signup" ng-click="openSignup()" ng-hide="auth"><i class="fa fa-user"></i> Sign Up </a></li>
+                <li role="menuitem"><a href="#logout" ng-click="logMeOut()" ng-show="auth"><i class="fa fa-sign-out"></i> Log Out</a></li>
+              </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="well-lg"  ui-view>
+
+    </div>
+  </div>
+  <footer class="text-center">Powered by <a href="https://www.themoviedb.org" target="_blank">The Movie DB</a></footer>
+
+  <!-- vendor -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" charset="utf-8"></script>
+  <script src="/js/vendor/ocLazyLoad.min.js" charset="utf-8"></script>
+  <script src="/js/vendor/loading-bar.min.js" charset="utf-8"></script>
+
+  <!-- top level -->
+  <script src="js/app.js" charset="utf-8"></script>
+
+  <!-- directives -->
+  <script src="/js/movies/directives.js" charset="utf-8"></script>
+  <script src="/js/main/directives.js" charset="utf-8"></script>
+
+  <!-- services -->
+  <script src="/js/movies/services.js" charset="utf-8"></script>
+  <script src="/js/shows/services.js" charset="utf-8"></script>
+  <script src="/js/main/services.js" charset="utf-8"></script>
+
+  <!-- controllers -->
+  <script src="/js/main/controller.js" charset="utf-8"></script>
+  <script src="/js/shows/controller.js" charset="utf-8"></script>
+  <script src="/js/nav/controller.js" charset="utf-8"></script>
+  <script src="/js/movies/controller.js" charset="utf-8"></script>
+</body>
+</html>

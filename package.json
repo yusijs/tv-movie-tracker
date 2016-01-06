@@ -1,0 +1,25 @@
+{
+  "name": "TV_Tracker",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "apicache": "0.0.12",
+    "async": "^1.4.2",
+    "bcrypt": "^0.8.5",
+    "body-parser": "^1.14.1",
+    "compression": "^1.6.0",
+    "express": "*",
+    "express-jwt": "^3.3.0",
+    "jade": "*",
+    "jsonwebtoken": "^5.4.1",
+    "monk": "^1.0.1",
+    "morgan": "^1.0.0",
+    "request": "*"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*",
+    "supertest": "*",
+    "debug": "*"
+  }
+}
