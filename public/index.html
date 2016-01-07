@@ -47,10 +47,10 @@
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown"  uib-dropdown on-toggle="toggled(open)">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" uib-dropdown-toggle>Account <span class="caret"></span></a>
-              <ul class="dropdown-menu uib-dropdown-menu" aria-labelledby="single-button" ng-controller="loginController">
-                <li role="menuitem"><a href="#login" ng-click="open()" ng-hide="auth"><i class="fa fa-sign-in"></i> Log In</a></li>
-                <li role="menuitem"><a href="#signup" ng-click="openSignup()" ng-hide="auth"><i class="fa fa-user"></i> Sign Up </a></li>
-                <li role="menuitem"><a href="#logout" ng-click="logMeOut()" ng-show="auth"><i class="fa fa-sign-out"></i> Log Out</a></li>
+              <ul class="dropdown-menu uib-dropdown-menu" aria-labelledby="single-button">
+                <li ng-controller="loginController" role="menuitem"><a href="#login" ng-click="open()" ng-hide="auth"><i class="fa fa-sign-in"></i> Log In</a></li>
+                <li ng-controller="signUpController" role="menuitem"><a href="#signup" ng-click="open()" ng-hide="auth"><i class="fa fa-user"></i> Sign Up </a></li>
+                <li ng-controller="loginController" role="menuitem"><a href="#logout" ng-click="logMeOut()" ng-show="auth"><i class="fa fa-sign-out"></i> Log Out</a></li>
               </ul>
           </li>
         </ul>

@@ -46,6 +46,36 @@ angular.module("tvApp")
     });
   };
 })
+.controller("signUpController", function($scope,$uibModal,$log,auth,$rootScope) {
+  $scope.open = function(size) {
+    var modalInstance = $uibModal.open({
+      animation: true,
+      templateUrl: '/views/signup.html',
+      controller: 'LoginInstanceCtrl',
+      size: size
+    });
+  };
+})
+.controller("signUpInstanceCtrl", function($scope, $rootScope, $uibModalInstance, auth, AuthTokenFactory) {
+  var signup = {};
+  $scope.signMeUp = function (username,email,password) {
+    auth.signup(username,email,password).then(function success(response) {
+      AuthTokenFactory.setToken(response.data.token);
+      // console.log(response.data);
+      if(!response.data.token) {
+        $scope.loginResults = response.data.message;
+      }
+      else {
+        $rootScope.auth = true;
+        $uibModalInstance.dismiss('cancel');
+      }
+    });
+  };
+
+  $scope.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
+})
 .controller("loginController", function($scope, $uibModal, $log, auth, $rootScope) {
 
   $scope.logMeOut = function() {
@@ -62,11 +92,11 @@ angular.module("tvApp")
       size: size
     });
 
-    modalInstance.result.then(function () {
-      // When logged in?
-    }, function () {
-      $log.info('Modal dismissed at: ' + new Date());
-    });
+    // modalInstance.result.then(function () {
+    //   // When logged in?
+    // }, function () {
+    //   $log.info('Modal dismissed at: ' + new Date());
+    // });
   };
 })
 .controller("LoginInstanceCtrl", function($scope, $rootScope, $uibModalInstance, auth, AuthTokenFactory) {
