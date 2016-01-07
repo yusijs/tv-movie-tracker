@@ -8,10 +8,9 @@
       <p><input type="text" class="span3" name="uname" id="uname" required ng-model="signupdata.username" placeholder="Username"></p>
       <p><input type="email" class="span3" name="uname" id="uname" required ng-model="signupdata.email" placeholder="E-mail"></p>
       <p><input type="password" class="span3" name="password" required ng-model="signupdata.password" placeholder="Password"></p>
-      <p><input type="password" class="span3" name="confirmPassword" required ng-model="signupdata.confirmPassword" compare-to="signupdata.password" placeholder="Confirm Password"></p>
-      <div ng-messages="signupform.confirmPassword.$error"
-      ng-messages-include="messages.html"></div>
-      <p><button type="submit" class="btn btn-primary">Sign Up!</button></p>
+      <p><input type="password" class="span3" name="confirmPassword" required ng-model="signupdata.confirmPassword" placeholder="Confirm Password"></p>
+      <p>{{passVerified}}</p>
+      <p><button type="submit" class="btn btn-primary" id="signupbtn">Sign Up!</button></p>
       <p ng-bind="signupResults">
 
       </p>

@@ -57,7 +57,19 @@ angular.module("tvApp")
   };
 })
 .controller("signUpInstanceCtrl", function($scope, $rootScope, $uibModalInstance, auth, AuthTokenFactory) {
-  var signup = {};
+  $scope.signupdata = {confirmPassword: ""};
+  $scope.passVerified = "";
+  $scope.$watch('signupdata.confirmPassword', function() {
+    alert("confirmpwd changed");
+    if($scope.signupdata.confirmPassword === $scope.signupdata.password) {
+      $scope.passVerified = "asd";
+      document.getElementById("signupbtn").disabled = false;
+    }
+    else {
+      $scope.passVerified = "Your password's doesn't match";
+      document.getElementById("signupbtn").disabled = true;
+    }
+  });
   $scope.signMeUp = function (username,email,password) {
     auth.signup(username,email,password).then(function success(response) {
       AuthTokenFactory.setToken(response.data.token);
